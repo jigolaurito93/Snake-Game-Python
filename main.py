@@ -37,6 +37,8 @@ while game_is_on:
     if snake.head.distance(food) < 15:
         # If snake collides with food, food location relocates
         food.refresh()
+        # Adds tail extension to snake body
+        snake.extend()
         scoreboard.increase_score()
     
     #Detect collision with wall
@@ -44,6 +46,14 @@ while game_is_on:
         game_is_on = False
         # Displays GAMEOVER when the snake hits the wall
         scoreboard.game_over()
+    
+    # Detect collision with tail
+    for segment in snake.segments[1:]:
+        if segment == snake.head:
+            pass
+        elif snake.head.distance(segment) < 10:
+            game_is_on = False
+            scoreboard.game_over()
 
 
     
