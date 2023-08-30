@@ -1,6 +1,7 @@
 from turtle import Turtle, Screen
 from snake import Snake
 from food import Food
+from scoreboard import Scoreboard
 import time
 
 screen = Screen()
@@ -20,8 +21,10 @@ screen.onkey(snake.down,"Down")
 screen.onkey(snake.left,"Left")
 screen.onkey(snake.right,"Right")
 
-
+# Create a food object
 food = Food()
+
+scoreboard = Scoreboard()
 
 # Move the snake forward
 game_is_on = True
@@ -34,6 +37,14 @@ while game_is_on:
     if snake.head.distance(food) < 15:
         # If snake collides with food, food location relocates
         food.refresh()
+        scoreboard.increase_score()
+    
+    #Detect collision with wall
+    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
+        game_is_on = False
+        # Displays GAMEOVER when the snake hits the wall
+        scoreboard.game_over()
+
 
     
     

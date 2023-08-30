@@ -16,6 +16,7 @@ class Food(Turtle):
         self.goto(rand_x, rand_y)
         self.refresh()
 
+
     # Method that relocates food location upon collision
     def refresh(self):
         rand_x = random.randint(-280,280)
