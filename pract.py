@@ -1,13 +1,25 @@
-def nb_dig(n, d):
-    num_list = []
-    counter = 0
-    for num in range(0, n+1): 
-        num_list.append(str(num**2))
-    for i in num_list:
-        for j in i:
-            if str(d) in j:
-                counter += 1
-    return counter
+class Animal:
 
+    def __init__(self):
+        print("I am an Animal")
+    
+    def breathe(self):
+        print("Inhale, Exhale")
+
+class Fish(Animal):
+
+    def __init__(self):
+        super().__init__()
+        
+    
+    def breathe(self):
+        print("doing this underwater")
+
+
+
+
+
+nemo = Fish()
+nemo.breathe()
    
 
